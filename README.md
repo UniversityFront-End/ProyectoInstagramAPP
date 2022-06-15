@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+1) npx create-react-app proyectoinstagramapp
+2) cd .\proyectoinstagramapp\
+3) npm install @material-ui/core
+4) npm i react-router@next history react-router-dom@next
+5) npm install react-router-dom
+
+![image](https://user-images.githubusercontent.com/54821048/173933067-354d3b04-4eeb-43b9-98f1-0fd65f0556f8.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
