@@ -14,7 +14,7 @@ body{
 }
 
 /* ----------- Start Scrolls -------------- */
-.scroll::-webkit-scrollbar{
+/* .scroll::-webkit-scrollbar{
 	width: 8px;
 }
 .scroll::-webkit-scrollbar-thumb{
@@ -32,5 +32,5 @@ body{
 .scroll::-webkit-scrollbar-track:hover, 
 .scroll::-webkit-scrollbar-track:active{
 	background: linear-gradient(transparent, #000000);
-}
+} */
 /* --------- Finish Scrolls ------------ */

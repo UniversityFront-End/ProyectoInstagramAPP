@@ -1,7 +1,45 @@
 body {
     background-color: #fafafa;
 }
-.maincontent__container {
+
+.maincontent {
+    background-color: rgb(250, 250, 250);
+    order: 4;
+    margin-top: 4px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    position: relative;
+    border: 0 solid black;
+    flex-grow: 1;
+    top: -3px;
+}
+._navbar {
+    height: 56px;
+    padding-bottom: 8px;
+    padding-top: 16px;
+    align-items: center;
+    background: rgb(250, 250, 250);
+    display: flex;
+    opacity: 1;
+}
+
+@media screen and (min-width: 640px) {
+    .maincontent {
+        padding-top: 30px;
+    }
+    ._navbar {
+        padding-bottom: 24px;
+        padding-top: 0;
+    }
+}
+
+/* .maincontent__container {
     max-width: 47% !important;
     overflow-y: scroll;
     max-height: 800px;
@@ -9,10 +47,10 @@ body {
 
 .maincontent__container::-webkit-scrollbar {
     display: none;
-}
+} */
 
   /* Hide scrollbar for IE, Edge and Firefox */
-.maincontent__container {
+/* .maincontent__container {
     -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
+    /*scrollbar-width: none;  /* Firefox */
+/*} */

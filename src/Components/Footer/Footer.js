@@ -8,13 +8,11 @@ class Footer extends Component{
     }
     render(){
         return(
-        <>
-            <div class="footer">
+            <div className="footer">
                 CopyRight &copy; 2022
                 &#9474; Todos Los Derechos Reservados.
                 &#9474; Distribuido Por: <strong><span><b>Instagram App&reg;.</b></span></strong>
             </div>
-        </>
         );
     }
 }

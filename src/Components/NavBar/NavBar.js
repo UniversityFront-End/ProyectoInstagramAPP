@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import "./NavBar.css";
-import Grid from '@material-ui/core/Grid';
 import insta_log from "../../images/logoinsta.png"
+import lupe from "../../images/lupe.svg"
 import home from "../../images/home.svg";
 import message from "../../images/message.svg";
+import addPlus from "../../images/addPlus.svg";
 import find from "../../images/find.svg";
-import react from "../../images/love.svg";
-import Avatar from '@material-ui/core/Avatar';
-import pp from "../../images/pp1.png"
+import love from "../../images/love.svg";
 
 class NavBar extends Component {
     constructor(props) {
@@ -15,30 +14,61 @@ class NavBar extends Component {
         this.state = {  }
     }
     render() { 
-        return ( 
-        <>
-            <div>
+        return (
+            <nav className="navbar">
                 <div className="navbar__barContent">
-                    <Grid container>
-                        <Grid item xs={2}> </Grid>
-                        <Grid item xs={3}>
-                            <img className="navbar_logo" alt='Instagram' src={insta_log} width="105px" />
-                        </Grid>
-                        <Grid item xs={3}>
-                            <input text="text" className="navbar__searchBar" placeholder="Buscar." />
-                        </Grid>
-                        <Grid item xs={3} style={{"display":"flex"}}>
-                            <img className="navbar__img" alt='Instagram' src={home} width="25px"/>
-                            <img className="navbar__img" alt='Instagram' src={message} width="25px" />
-                            <img className="navbar__img" alt='Instagram' src={find} width="25px" />
-                            <img className="navbar__img" alt='Instagram' src={react} width="25px" />
-                            <Avatar src={pp} className="navbar__img" style={{"maxWidth":"25px","maxHeight":"25px"}} />
-                        </Grid>
-                        <Grid item xs={1}></Grid>
-                    </Grid>
+                    <div className="navbar__barContent__left">
+                        <a href="/">
+                            <img src={insta_log} alt="Instagram" className="navbar__barContent__left__logo" />
+                        </a>
+                    </div>
+                    <div className="navbar__barContent__center">
+                        <input type="text" placeholder="Busca" className="navbar__barContent__center__search" />
+                        <img src={lupe} alt="lupe" className="navbar__barContent__center__lupe" />
+                        <div className="navbar__barContent__center__x"><span></span></div>
+                        <div className="navbar__barContent__center__modal">
+                            <div className="navbar__barContent__center__modal__header">
+                                <h4>Recientes</h4>
+                            </div>
+                            <div className="navbar__barContent__center__modal__main">
+                                <p>No hay búsquedas recientes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="navbar__barContent__right">
+                        <div className="navbar__barContent__right__icons">
+                            <a href="/">
+                                <img src={home} alt="Home" className="navbar__barContent__right__icons__img" />
+                            </a>
+                        </div>
+                        <div className="navbar__barContent__right__icons">
+                            <a href="/direct/inbox/">
+                                <img src={message} alt="Messenger" className="navbar__barContent__right__icons__img" />
+                            </a>
+                        </div>
+                        <div className="navbar__barContent__right__icons">
+                            <button>
+                                <img src={addPlus} alt="Nueva publicación" className="navbar__barContent__right__icons__img" />
+                            </button>
+                        </div>
+                        <div className="navbar__barContent__right__icons">
+                            <a href="/explore/">
+                                <img src={find} alt="Buscar personas" className="navbar__barContent__right__icons__img" />
+                            </a>
+                        </div>
+                        <div className="navbar__barContent__right__icons">
+                            <a href="/accounts/activity/">
+                                <img src={love} alt="Sección de actividad" className="navbar__barContent__right__icons__img" />
+                            </a>
+                        </div>
+                        <div className="navbar__barContent__right__icons">
+                            <span>
+                                <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Foto del perfil de Rick_Sanchez" className="navbar__barContent__right__icons__img" />
+                            </span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </>
+            </nav>
         );
     }
 }

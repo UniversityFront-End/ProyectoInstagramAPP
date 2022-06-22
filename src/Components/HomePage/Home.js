@@ -9,13 +9,11 @@ class Home extends Component {
         this.state = {  }
     }
     render() { 
-        return ( 
-        <>
+        return (
             <div>
                 <NavBar />
                 <MainContent />
             </div>
-        </>    
         );
     }
 }

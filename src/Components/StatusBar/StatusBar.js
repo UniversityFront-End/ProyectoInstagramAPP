@@ -1,78 +1,110 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState} from 'react';
 import "./StatusBar.css";
-import { Avatar } from '@material-ui/core';
-import statusimg from "../../images/pp1.png";
-import uploadimage from "../../images/statusadd.png";
+import States from './States/States';
 
-class StatusBar extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            statusList: []
-        }
+
+function StatusBar() {
+    let [statusList, setStatusList] = useState([])
+    
+    useEffect(() => {
+        fetch("https://rickandmortyapi.com/api/character")
+        .then((response) => response.json())
+        .then((data) => setStatusList(data.results))
+        .catch((err) => console.info(err))
+
+    }, [])
+
+    statusList = statusList.filter(item => item.id !== 1)
+    let trmXli1 = {
+        transform: 'translateX(0px)',
+        width: '10px'
+    }
+    let trmXli2 = {
+        transform: 'translateX(' + (statusList.length * 80) + 'px)',
+        width: '10px'
     }
 
-    componentDidMount(){
-        this.getData();
-    }
-
-    getData=()=>{
-        let data=[
-            {
-                "username":"anindya_bunny",
-                "imageURL":"https://darresne.com/img/female-avatar.png"
-            },
-            {
-                "username":"abcs",
-                "imageURL":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJYxr247w5ckIok4oLED58Lm7koT7pj4225A&usqp=CAU"
-            },
-            {
-                "username":"qwe",
-                "imageURL":"https://www.w3schools.com/w3css/img_avatar3.png"
-            },
-            {
-                "username":"jyjj",
-                "imageURL":"https://darresne.com/img/female-avatar.png"
-            },
-            {
-                "username":"sdfsd",
-                "imageURL":"https://www.w3schools.com/w3css/img_avatar3.png"
-            },
-            {
-                "username":"dfgdfg",
-                "imageURL":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGonDgYzVXUcaKSWbvyH_ICVD23aI4zlRMJQ&usqp=CAU"
-            },
-            {
-                "username":"jdfgdfg",
-                "imageURL":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJYxr247w5ckIok4oLED58Lm7koT7pj4225A&usqp=CAU"
-            },
-            {
-                "username":"jghjghj",
-                "imageURL":"../../images/pp1.png"
-            }
-        ]
-        this.setState({statusList: data});
-    }
-
-    render() { 
-        return ( 
-        <>
-            <div>
-                <div className="statusbar__container">
-                    <img className="statusbar__upload" alt='' src={uploadimage} width="55px" height="55px" />
-                    {
-                        this.state.statusList.map((item,index)=>(
-                            <div className="status">
-                                <Avatar className="statusbar__status" src={statusimg} />
-                                <div className="statusbar__text">{item.username}</div>
-                            </div>
-                        ))
-                    }
+    return (
+        <div className="statusbar">
+            <button className="statusbar__button button-right" onClick={MoveRight}></button>
+            <button className="statusbar__button button-left button-none" onClick={MoveLeft}></button>
+            <div className="statusbar__container">
+                <div className="statusbar__container-view">
+                    <ul className="statusbar__container__list">
+                        <li style={trmXli1}></li>
+                        <li style={trmXli2}></li>
+                        {
+                            
+                            statusList.map((props, index)=>{
+                                let trmX = new Object();
+                                trmX.transform = "translateX(" + (-70 + ((index + 1) * 80)) + "px)";
+                                return <States 
+                                key={props.id} 
+                                name={props.name.replace(/\s/g, '_')}
+                                image={props.image}
+                                trmX={trmX}
+                                />
+                            })
+                        }
+                    </ul>
                 </div>
             </div>
-        </>
-        );
+        </div>
+    );
+    
+}
+
+function MoveRight() {
+    let statusbarContainer = document.getElementsByClassName('statusbar__container')[0];
+    let statusbarContainerView = document.getElementsByClassName('statusbar__container-view')[0];
+    let buttonLeft = document.getElementsByClassName("button-left")[0];
+    let buttonRight = document.getElementsByClassName("button-right")[0];
+
+    let trm = statusbarContainerView.scrollWidth - (statusbarContainer.scrollLeft + statusbarContainer.offsetWidth)
+
+    if (trm < 320) {
+        statusbarContainerView.style.transform = 'translateX(-' + (trm) + 'px)';
+    } else {
+        statusbarContainerView.style.transform = 'translateX(-320px)';
     }
+    statusbarContainerView.style.transition = 'transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s';
+    
+    setTimeout(() => {
+        statusbarContainerView.style = '';
+        statusbarContainer.scrollLeft += 320;
+        buttonLeft.classList.remove('button-none');
+        if (trm < 320) {
+            buttonRight.classList.add('button-none');
+        }
+    }, 500);
+}
+
+function MoveLeft() {
+    let statusbarContainer = document.getElementsByClassName('statusbar__container')[0];
+    let statusbarContainerView = document.getElementsByClassName('statusbar__container-view')[0];
+    let buttonLeft = document.getElementsByClassName("button-left")[0];
+    let buttonRight = document.getElementsByClassName("button-right")[0];
+    let trm = statusbarContainer.scrollLeft%320;
+    
+    if (trm > 0) {
+        statusbarContainerView.style.transform = 'translateX(' + (trm) + 'px)';
+    } else {
+        statusbarContainerView.style.transform = 'translateX(320px)';
+    }
+    statusbarContainerView.style.transition = 'transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s';
+    setTimeout(() => {
+        statusbarContainerView.style = '';
+        buttonRight.classList.remove('button-none');
+        if (trm > 0) {
+            statusbarContainer.scrollLeft -= trm;
+        } else {
+            statusbarContainer.scrollLeft -= 320;
+        }
+
+        if (statusbarContainer.scrollLeft === 0) {
+            buttonLeft.classList.add('button-none');
+        }
+    }, 500);
 }
 
 export default StatusBar;

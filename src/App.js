@@ -19,7 +19,7 @@ class App extends Component {
             {
               /*<LoginPage />*/ <Home />
             }
-            <Footer />
+            {/* <Footer /> */}
         </div>
       </Router>
     );

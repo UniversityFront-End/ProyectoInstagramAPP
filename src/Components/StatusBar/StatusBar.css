@@ -1,34 +1,63 @@
+.statusbar {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 3px; 
+    margin-bottom: 24px;
+    margin-top: 0;
+    padding: 16px 0;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+.statusbar__button {
+    cursor: pointer;
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    width: 45px;
+    height: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    outline: none;
+    justify-content: center;
+    z-index: 5;
+    background-image: url(https://static.cdninstagram.com/rsrc.php/v3/yO/r/mhNDSKlDQma.png);
+    background-repeat: no-repeat;
+}
+.button-right {
+    right: 0px;
+    background-position: -244px -107px;
+}
+.button-left {
+    left: 0px;
+    background-position: -379px -128px;
+}
+.button-none {
+    display: none;
+}
 .statusbar__container {
-    height: 120px;
-    width: 615px;
-    background-color: white;
-    border: 1px solid #dbdddb;
-    margin-top: 25px;
     display: flex;
-    overflow-x: scroll;
+    flex-direction: row;
+    height: 85px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    vertical-align: baseline;
+    position: relative;
 }
 .statusbar__container::-webkit-scrollbar {
     display: none;
 }
-
-.statusbar__status {
-    min-width: 55px;
-    min-height: 55px;
-    border: 3px solid #DF3968;
+.statusbar__container-view {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    position: relative;
 }
-.status {
-    margin: 25px 10px;
-}
-.statusbar__text {
-    font-size: 12px;
-    max-width: 60px;
-    overflow-x: hidden;
-    text-align: center;
-}
-.statusbar__upload {
-    margin: 30px 20px 30px 30px;
-    border: 3px solid #949494;
-    background-color: #FFFFFF;
-    -moz-border-radius:75px;
-    -webkit-border-radius: 75px;
+.statusbar__container__list {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    transition: transform 0.3s ease-in-out;
 }
