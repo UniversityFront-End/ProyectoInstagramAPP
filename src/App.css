@@ -11,10 +11,6 @@
 
 body{
 	font-family: var(--body-font);
-	font-size: 14px;
-    line-height: 18px;
-	background: rgba(var(--d87,255,255,255),1);
-    overflow-y: scroll;
 }
 
 /* ----------- Start Scrolls -------------- */
