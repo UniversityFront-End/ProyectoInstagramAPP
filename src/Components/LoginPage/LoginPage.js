@@ -8,6 +8,7 @@ import appstore from '../../images/app.png';
 import playstore from '../../images/play.png';
 import SignIN from '../SignIn/SignIN';
 import SignUp from '../SignUp/SignUp';
+import { Link } from 'react-router-dom';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -29,17 +30,17 @@ class LoginPage extends Component {
         <>
             <div>
                 <Grid container>
-                    <Grid item xs={3}>
+                    <Grid className="A1" item xs={3}>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid className="A2" item xs={6}>
                         <div className="loginpage__main">
-                            <div>
+                            <div className="responsiveSlide">
                                 <img src={inst_image} alt="Instagram" width="454px" />
                             </div>
                             <div>
                                 <div className="loginpage_rightcomponent">
                                     <img className="loginpage__logo" alt="Instagram" src={insta_logo} />
-                                    <div className="loginPage__signin">
+                                    <div className="loginPage__signin" id="signin-form">
                                         {
                                             this.state.isLogin ? <SignIN/> : <SignUp/>
                                         }
@@ -51,31 +52,38 @@ class LoginPage extends Component {
                                         </div>
 
                                         <div className="login__fb">
-                                            <img src={fb} alt="Instagram" width="15px" style={{ "marginRight":"5px" }} />Iniciar Sesión Con Facebook.
+                                            <button className="button__fb">
+                                                <img src={fb} alt="Instagram" className='imgFB' />
+                                                <span>Iniciar Sesión Con Facebook.</span>
+                                            </button>
                                         </div>
-                                        <div className="login_forgt"> ¿Has Olvidado La Contraseña?</div>
+                                        <Link to="#" className="login_forgt"> ¿Has Olvidado La Contraseña?</Link>
                                     </div>
                                 </div>
                                 <div className="loginpage__signupoption">
                                     {
                                         this.state.isLogin ?
-                                        <div className="loginPage__signin">¿No Tienes Una Cuenta? <span onClick={this.changeLogin} style={{ "fontWeight":"bold", "color":"#0395F6"}}>Regístrate.</span></div> :
-                                        <div className="loginPage__signup">¿Tener Una Cuenta? <span onClick={this.changeLogin} style={{ "fontWeight":"bold", "color":"#0395F6"}}>Iniciar Sesión.</span></div>
+                                        <p className="loginPage__signin">¿No Tienes Una Cuenta? <span onClick={this.changeLogin} style={{ "fontWeight":"bold", "color":"#0395F6"}}><Link to="#">Regístrate.</Link></span></p> :
+                                        <p className="loginPage__signup">¿Tienes Una Cuenta? <span onClick={this.changeLogin} style={{ "fontWeight":"bold", "color":"#0395F6"}}><Link to="#">Entrar.</Link></span></p>
                                     }
                                 </div>
                                 <div className="loginPage__downloadSection">
-                                    <div>
+                                    <p className='DescargaAPP'>
                                         Descarga La Aplicación.
-                                    </div>
+                                    </p>
                                     <div className="loginPage__option">
-                                        <img className="loginPage_dwimg" alt="Instagram" src={appstore} width="136px" />
-                                        <img className="loginPage_dwimg" alt="Instagram" src={playstore} width="136px" />
+                                        <Link to="#">
+                                            <img className="loginPage_dwimg" alt="Instagram" src={appstore} width="136px" />
+                                        </Link>
+                                        <Link to="#">
+                                            <img className="loginPage_dwimg" alt="Instagram" src={playstore} width="136px" />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid className="A3" item xs={3}>
                     </Grid>
                 </Grid>
             </div>
