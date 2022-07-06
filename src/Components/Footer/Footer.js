@@ -13,7 +13,7 @@ class Footer extends Component{
             <div className="footer">
                 <div className="links">
                     <Link to="#">Acerca De.</Link>
-                    <Link to="#">   </Link>
+                    <Link to="#">Blog.</Link>
                     <Link to="#">Trabajos.</Link>
                     <Link to="#">Ayuda.</Link>
                     <Link to="#">API.</Link>
