@@ -48,7 +48,7 @@ class MainPage extends Component {
             <div>
                 {
                     this.state.postArray.map((item,index)=>(
-                        <Post id={item.postId} userName={item.userName} postImage={item.postImageURL} likes={item.likes} />
+                        <Post key={index} id={item.postId} userName={item.userName} postImage={item.postImageURL} likes={item.likes} />
                     ))
                 }
             </div>

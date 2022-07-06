@@ -62,7 +62,7 @@ class StatusBar extends Component {
                     <img className="statusbar__upload" alt='' src={uploadimage} width="55px" height="55px" />
                     {
                         this.state.statusList.map((item,index)=>(
-                            <div className="status">
+                            <div className="status" key={index}>
                                 <Avatar className="statusbar__status" src={statusimg} />
                                 <div className="statusbar__text">{item.username}</div>
                             </div>

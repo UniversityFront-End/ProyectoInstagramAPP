@@ -75,7 +75,7 @@ class Post extends Component {
                     {
                         this.state.commentList.map((item,index)=>(
                             index < 4 ?
-                            <div className="post_comment">{item.username}: {item.description}</div> :<span></span>
+                            <div key={index} className="post_comment">{item.username}: {item.description}</div> :<span></span>
                         ))
                     }
                     <input text="text" className="post__commentbox" placeholder="Añadir Un Comentario." />

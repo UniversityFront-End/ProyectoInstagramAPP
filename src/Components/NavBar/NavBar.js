@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import "./NavBar.css";
 import Grid from '@material-ui/core/Grid';
-import insta_log from "../../images/logoinsta.png"
+import insta_log from "../../images/logoinsta.png";
 import home from "../../images/home.svg";
 import message from "../../images/message.svg";
 import find from "../../images/find.svg";
 import react from "../../images/love.svg";
 import Avatar from '@material-ui/core/Avatar';
 import pp from "../../images/pp1.png"
+import {
+    Routes,
+    Route,
+    Link,
+    Outlet,
+  } from "react-router-dom";
 
 class NavBar extends Component {
     constructor(props) {
@@ -16,6 +22,7 @@ class NavBar extends Component {
     }
     render() { 
         return ( 
+            
         <>
             <div>
                 <div className="navbar__barContent">
@@ -32,7 +39,9 @@ class NavBar extends Component {
                             <img className="navbar__img" alt='Instagram' src={message} width="25px" />
                             <img className="navbar__img" alt='Instagram' src={find} width="25px" />
                             <img className="navbar__img" alt='Instagram' src={react} width="25px" />
-                            <Avatar src={pp} className="navbar__img" style={{"maxWidth":"25px","maxHeight":"25px"}} />
+                            <Link to="profile">
+                                <Avatar src={pp} className="navbar__img" style={{"maxWidth":"25px","maxHeight":"25px"}} />
+                            </Link>
                         </Grid>
                         <Grid item xs={1}></Grid>
                     </Grid>
