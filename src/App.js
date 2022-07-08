@@ -3,9 +3,10 @@
 //Dependencies
 import React, { Component } from 'react';
 import {BrowserRouter as Router} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 //Components
 import LoginPage from './Components/LoginPage/LoginPage';
-import Home from './Components/HomePage/Home';
+//import Home from './Components/HomePage/Home';
 import Footer from './Components/Footer/Footer';
 //Includes
 import './App.css';
@@ -14,13 +15,22 @@ import './App.css';
 class App extends Component {
   render() {
     return (
+      /*<Router>*/
+        /*<div className="App">*/
+          /*{*/
+            /*<LoginPage />*/ /*<Home />*/
+          /*}*/
+          /*<Footer />*/
+        /*</div>*/
+      /*</Router>*/
+
       <Router>
-        <div className="App">
-            {
-              <LoginPage /> /*<Home />*/
-            }
-            <Footer />
-        </div>
+        <Routes>
+          <Route path="/" element={<LoginPage />}></Route>
+        </Routes>
+        <div className="App" >
+          <Footer />
+        </div> 
       </Router>
     );
   }
