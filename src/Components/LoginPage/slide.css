@@ -1,0 +1,22 @@
+.slide-container {
+    height: 618px;
+    flex-basis: 454px;
+}
+
+.slide-content {
+    margin: 99px 0 0 151px;
+    position: relative;
+}
+
+.slide-content img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.slide-content img.active {
+    opacity: 1;
+    visibility: visible;
+}
